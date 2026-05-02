@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "md-convert"
-version = "1.0.1"
+version = "1.0.2"
 description = "Convert Markdown to PDF/DOCX with tables, code blocks, and diagrams"
 readme = "README.md"
 license = "MIT"

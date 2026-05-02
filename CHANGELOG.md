@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.2] - 2026-05-01
+
+### Added
+- **Kroki Offline Mode**: `KrokiRenderer` with connectivity check, falls back to raw diagram code when offline
+- **File Logging with Rotation**: `RotatingFileHandler` with `max_bytes` and `backup_count`, configured via `log_file` in config
+- **Hook System**: `HookManager` with phases (PRE_CONVERT, POST_CONVERT, PRE_RENDER, POST_RENDER, ON_ERROR) for extensibility
+- **Plugin System**: `PluginRegistry` with entry point discovery for custom parsers/renderers
+- **Streaming Mode**: `Converter.convert_streaming()` for chunk-based processing of large files (>10MB)
+- **Watch Mode**: `md-convert watch start` command using watchdog for auto-reconvert on file changes
+
 ## [1.0.1] - 2026-05-01
 
 ### Added
