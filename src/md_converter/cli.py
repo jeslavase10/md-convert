@@ -1,6 +1,7 @@
 """CLI module for md-convert."""
 
 import typer
+import time
 from pathlib import Path
 from rich.console import Console
 from rich.table import Table
@@ -271,7 +272,85 @@ def templates_create(
         raise typer.Exit(1)
 
 
+watch_app = typer.Typer(help="Watch files for changes and auto-convert")
+
+
+@watch_app.command("start")
+def watch_start(
+    input: Path = typer.Argument(..., help="File or directory to watch"),
+    output: Path = typer.Option(None, "-o", "--output", help="Output file or directory"),
+    format: str = typer.Option("pdf", "-f", "--format", help="Output format: pdf or docx"),
+    recursive: bool = typer.Option(False, "-r", "--recursive", help="Watch recursively"),
+    delay: float = typer.Option(1.0, "--delay", help="Seconds to wait after change before converting"),
+):
+    """Watch a file or directory for changes and auto-convert."""
+    from watchdog.observers import Observer
+    from watchdog.events import FileSystemEventHandler
+    import time
+
+    class MarkdownWatchHandler(FileSystemEventHandler):
+        def __init__(self, input_path, output_path, format, delay):
+            self.input_path = input_path
+            self.output_path = output_path
+            self.format = format
+            self.delay = delay
+            self.last_trigger = 0
+            self.debounce_timer = None
+
+        def on_modified(self, event):
+            if event.src_path.endswith(".md"):
+                self._trigger_convert()
+
+        def on_created(self, event):
+            if event.src_path.endswith(".md"):
+                self._trigger_convert()
+
+        def _trigger_convert(self):
+            # Simple debounce
+            now = time.time()
+            if now - self.last_trigger < self.delay:
+                return
+            self.last_trigger = now
+
+            console.print(f"\n[cyan]Detected change: {event.src_path}[/cyan]")
+            try:
+                _convert_file(
+                    self.input_path,
+                    self.output_path,
+                    self.format,
+                    _build_config(None, "github-dark", None, "default", "default", "svg"),
+                    True,
+                    False,
+                    False,
+                )
+                console.print(f"[green]✓ Auto-converted: {event.src_path}[/green]")
+            except Exception as e:
+                console.print(f"[red]✗ Auto-convert failed: {e}[/red]")
+
+    if not input.exists():
+        console.print(f"[red]Error: Path not found: {input}[/red]")
+        raise typer.Exit(2)
+
+    console.print(f"[cyan]Watching: {input}[/cyan]")
+    console.print("[yellow]Press Ctrl+C to stop[/yellow]")
+
+    handler = MarkdownWatchHandler(input, output, format, delay)
+    observer = Observer()
+    observer.schedule(handler, str(input.parent), recursive=recursive)
+    observer.start()
+
+    try:
+        while True:
+            time.sleep(1)
+    except KeyboardInterrupt:
+        observer.stop()
+        console.print("[red]Watch stopped[/red]")
+
+    observer.join()
+
+
 app.add_typer(templates_app, name="templates")
+app.add_typer(watch_app, name="watch")
 
 
 if __name__ == "__main__":
