@@ -1,0 +1,29 @@
+/* Code highlighting styles for md-convert */
+/* This file aggregates all available code themes */
+
+/* github-dark (default) */
+.highlight .hll { background-color: #ffc; }
+.highlight .c { color: #999; font-style: italic; }
+.highlight .k { color: #c678dd; }
+.highlight .o { color: #abb2bf; }
+.highlight .p { color: #abb2bf; }
+.highlight .nb { color: #61afef; }
+.highlight .nc { color: #61afef; font-weight: bold; }
+.highlight .nd { color: #61afef; }
+.highlight .ni { color: #d19a66; }
+.highlight .ne { color: #c678dd; font-weight: bold; }
+.highlight .nf { color: #61afef; }
+.highlight .nl { color: #abb2bf; }
+.highlight .nn { color: #abb2bf; }
+.highlight .nt { color: #e06c75; }
+.highlight .nv { color: #e06c75; }
+.highlight .s { color: #98c379; }
+.highlight .sb { color: #98c379; }
+.highlight .sc { color: #98c379; }
+.highlight .sd { color: #98c379; }
+.highlight .s1 { color: #98c379; }
+.highlight .se { color: #98c379; font-weight: bold; }
+.highlight .si { color: #c678dd; }
+.highlight .sr { color: #56b6c2; }
+.highlight .ss { color: #56b6c2; }
+.highlight .sx { color: #56b6c2; }

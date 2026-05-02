@@ -1,0 +1,65 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "md-convert"
+version = "1.0.1"
+description = "Convert Markdown to PDF/DOCX with tables, code blocks, and diagrams"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [
+    { name = "Tu Nombre", email = "tu@email.com" }
+]
+keywords = ["markdown", "pdf", "docx", "converter", "cli"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Text Processing :: Markup",
+    "Topic :: Utilities",
+]
+
+dependencies = [
+    "typer>=0.9.0",
+    "rich>=13.0.0",
+    "markdown>=3.5.0",
+    "pymdown-extensions>=10.0",
+    "pygments>=2.17.0",
+    "weasyprint>=60.0",
+    "python-docx>=1.1.0",
+    "beautifulsoup4>=4.12.0",
+    "docxcompose>=1.4.0",
+    "pyyaml>=6.0",
+    "jinja2>=3.1.0",
+    "watchdog>=3.0.0",
+]
+
+[project.optional-dependencies]
+math = ["matplotlib>=3.8.0"]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-cov>=4.0.0",
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0.0",
+]
+build = [
+    "pyinstaller>=6.0.0",
+]
+
+[project.scripts]
+md-convert = "md_converter.cli:app"
+
+[project.urls]
+Homepage = "https://github.com/tuuser/md-convert"
+Documentation = "https://github.com/tuuser/md-convert/docs"
+Repository = "https://github.com/tuuser/md-convert"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/md_converter"]

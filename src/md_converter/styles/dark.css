@@ -1,0 +1,26 @@
+/* Monokai-style code highlighting theme */
+.highlight .hll { background-color: #49483e; }
+.highlight .c { color: #75715e; font-style: italic; }
+.highlight .k { color: #66d9ef; font-weight: bold; }
+.highlight .o { color: #f8f8f2; }
+.highlight .p { color: #f8f8f2; }
+.highlight .nb { color: #66d9ef; }
+.highlight .nc { color: #66d9ef; font-weight: bold; }
+.highlight .nd { color: #66d9ef; }
+.highlight .ni { color: #a6e22e; }
+.highlight .ne { color: #a6e22e; font-weight: bold; }
+.highlight .nf { color: #a6e22e; }
+.highlight .nl { color: #f8f8f2; }
+.highlight .nn { color: #f8f8f2; }
+.highlight .nt { color: #f92672; }
+.highlight .nv { color: #f92672; }
+.highlight .s { color: #e6db74; }
+.highlight .sb { color: #e6db74; }
+.highlight .sc { color: #e6db74; }
+.highlight .sd { color: #e6db74; }
+.highlight .s1 { color: #e6db74; }
+.highlight .se { color: #e6db74; font-weight: bold; }
+.highlight .si { color: #ae81ff; }
+.highlight .sr { color: #ae81ff; }
+.highlight .ss { color: #e6db74; }
+.highlight .sx { color: #ae81ff; }

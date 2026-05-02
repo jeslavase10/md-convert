@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+{{ css }}
+    </style>
+</head>
+<body class="academic">
+<div class="academic-header">
+    <h1 class="title">{{ title }}</h1>
+    {% if author %}<div class="author">{{ author }}</div>{% endif %}
+    {% if affiliation %}<div class="affiliation">{{ affiliation }}</div>{% endif %}
+    {% if email %}<div class="email">{{ email }}</div>{% endif %}
+    <hr class="title-rule" />
+</div>
+<div class="abstract">
+    {% if abstract_title %}<h2>{{ abstract_title }}</h2>{% endif %}
+    {{ abstract }}
+</div>
+<div class="content">
+{{ content }}
+</div>
+<div class="references">
+    <h2>References</h2>
+    {{ references }}
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+{{ css }}
+    </style>
+</head>
+<body>
+<div class="report-header">
+    <h1>{{ title }}</h1>
+    {% if subtitle %}<p class="subtitle">{{ subtitle }}</p>{% endif %}
+    {% if author %}<p class="author">{{ author }}</p>{% endif %}
+    {% if date %}<p class="date">{{ date }}</p>{% endif %}
+    <hr />
+</div>
+<div class="report-content">
+{{ content }}
+</div>
+</body>
+</html>
